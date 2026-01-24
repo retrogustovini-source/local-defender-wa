@@ -1,0 +1,31 @@
+[phases.setup]
+aptPkgs = ["postgresql"]
+```
+
+Questo dice a Railway di installare PostgreSQL system libraries.
+
+---
+
+**Alternativa (se nixpacks.toml non funziona):**
+
+Usa la versione binaria di psycopg2 che è già nel tuo `requirements.txt` - ma assicurati che sia esattamente così:
+```
+Flask==3.0.0
+twilio==8.11.0
+gunicorn==21.2.0
+psycopg2-binary==2.9.9
+SQLAlchemy==2.0.23
+```
+
+**NON** `psycopg2`, ma **`psycopg2-binary`** (dovrebbe essere già corretto).
+
+---
+
+## Struttura finale dei file:
+```
+local-defender-wa/
+├── main.py
+├── database.py
+├── requirements.txt
+├── Procfile
+├── nixpacks.toml    ← AGGIUNGI QUESTO
